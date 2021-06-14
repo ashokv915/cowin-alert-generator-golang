@@ -36,9 +36,9 @@ func ExtractDetails(Sessions []models.Session) {
 
 				if (pastCountDose1 != int64(presentCountDose1)) || (pastCountDose2 != int64(presentCountDose2)) {
 					log.Println("Count Changed")
-					message := fmt.Sprintf("Date: %s\nVaccination Center: %s\nDose1:%d\nDose2:%d\nVaccine:%s\nMinimum Age: %d\nPincode: %d\n",v.Date,v.Name,v.AvailableCapacityDose1,v.AvailableCapacityDose2,v.Vaccine,v.MinAge,v.Pincode)
+					message := fmt.Sprintf("Date: %s\nPlace: %s\nDose1: %d\nDose2: %d\nMinimum Age: %d\nVaccine: %s\nFee: %s\nPincode: %d\n \n \n \n",v.Date,v.Name,v.AvailableCapacityDose1,v.AvailableCapacityDose2,v.MinAge,v.Vaccine,v.FeeType,v.Pincode,"https://selfregistration.cowin.gov.in/")
 					TelegramMessage(message)
-					log.Println("Message sent to Telegram")
+					log.Println("Message sent to Telegram successfully")
 					UpdateDB(v.Center_id,int32(presentCountDose1),int32(presentCountDose2))
 				}
 			}
